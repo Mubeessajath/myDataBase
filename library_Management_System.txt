@@ -1,0 +1,70 @@
+create database LibraryManagemantSystem;
+use LibraryManagemantSystem;
+
+create table Author(
+	Author_ID varchar(100) primary key not null,
+    First_name varchar(100) not null,
+    Last_name varchar (100) not null,
+    address varchar(255) not null,
+    Email varchar(100) not null,
+    Telepone int
+);
+
+create table books(
+	ISBN int  primary key not null,
+    Book_name varchar(255) not null,
+    publish_date date not null,
+    price int not null,
+    Number_of_copies int not null,
+    author_ID varchar(200),
+    
+    foreign key (author_ID) references author(author_ID)
+);
+
+create table members(
+	member_ID int primary key, 
+	member_name varchar(255) not null,
+    gender varchar(1) not null,
+    date_of_birth date not null,
+    address varchar (255)not null,
+    email varchar(100) not null,
+    telephone int not null,
+    Join_date date
+);
+
+create table employee(
+	employee_ID int primary key not null,
+    first_name varchar(100) not null,
+    second_name varchar(100) not null,
+    email varchar(100) not null,
+    join_date date not null,
+    position varchar(100) not null,
+    telephone int not null,
+    address varchar(255)
+);
+
+create table bookObtain(
+	resipt_no int primary key not null,
+	member_ID int not null,
+    ISBN int not null,
+    borrow_date date not null,
+    handor_date date not null,
+    
+    foreign key (member_ID) references members(member_ID),
+    foreign key (ISBN) references books(ISBN)
+);
+
+create table Givers(
+	giver_ID int primary key not null,
+    full_Name varchar(255) not null,
+    gender varchar(1) not null,
+    address varchar (255) not null,
+    telephone int not null,
+    email varchar(100) not null,
+    age int not null
+);
+
+    
+
+
+
